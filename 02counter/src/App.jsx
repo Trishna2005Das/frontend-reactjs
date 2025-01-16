@@ -13,8 +13,17 @@ function App() {
   //let counter=0 not required now 
   const addValue=()=>{
     console.log("clicked",counter)
-    counter=counter+1
-    setCounter(counter)
+    
+    setCounter((prevCounter) => prevCounter + 1)
+    //the () is a callback function that will be executed when the setCounter function is called.
+    setCounter((prevCounter) => prevCounter + 1)
+    setCounter((prevCounter) => prevCounter + 1)
+    setCounter((prevCounter) => prevCounter + 1)
+    // setCounter(counter+1)
+    // setCounter(counter+1)
+    // setCounter(counter+1)
+
+    //the increment will be done only once not multiple times because setCounter is a function that updates the state of the counter variable to the new value passed to it. the useState sends ui in bacth so the increment will be done only once.
   }
   const removeValue=()=>{
     console.log("clicked",counter)
