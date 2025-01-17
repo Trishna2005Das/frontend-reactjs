@@ -36,3 +36,4 @@ export default App
 // what does w-full do?->full width
 // what does h-screen do?->full height
 // what does duration-300 do?->change the duration of the transition
+// what does inset-x-0 do?-

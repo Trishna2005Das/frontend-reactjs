@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* If you have any other CSS code before these directives, it can cause issues with the way Tailwind CSS is processed.
+
+In your case, the index.css file likely had some existing CSS code that was being processed before the @tailwind directives. By removing the contents of index.css and only leaving the @tailwind directives, you ensured that Tailwind CSS is processed correctly. */
