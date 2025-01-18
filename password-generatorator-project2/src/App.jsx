@@ -1,4 +1,4 @@
-import { useState, useCallback,useEffect } from 'react'
+import { useState, useCallback,useEffect,useRef} from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -11,7 +11,7 @@ function App() {
   const [symbol, setSymbol] = useState(false)
   //to change some values in passwrod
   const [password, setPassword] = useState('')
-
+  const passwordRef = useRef(null)
   const generatePassword = useCallback(() => {
     let pass = ''
     let str = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
@@ -28,6 +28,11 @@ function App() {
 //useCallback-> useCallback is a hook that returns a memoized version of a function that only changes if one of its dependencies has changed. useCallback is used to memoize a function so that it is only re-created when its dependencies change.
 //dependecies->the dependencies of a useCallback are the values passed to it as an argument. If the dependencies change, the function will be re-created and the useCallback will return a new function.array to pass the values
 
+
+const copyPassword = useCallback(() => {
+  passwordRef.current?.select()
+  window.navigator.clipboard.writeText(password)
+},[password])
 
 
 useEffect(() => {
@@ -64,12 +69,13 @@ useEffect(() => {
         <div className='flex flex-wrap justify-center items-center shadow-lg rounded-lg p-3'>
           <input type="text"
           value={password}a
-          className='outline-none px-3 py-1 rounded-lg'
+          className='outline-none px-3 py-1.5 m-2 rounded-lg'
           placeholder='Password'
-          readOnly />
+          readOnly
+          ref={passwordRef} />
           <button
-           
-          className='outline-none bg-blue-700 text-white p-3 m-3 rounded-lg
+           onClick={copyPassword}
+          className='outline-none bg-blue-700 text-white px-3 py-0.5 m-2 rounded-lg
           shadow-lg hover:bg-green-800
           active:scale-90
   active:shadow-green-600
@@ -91,7 +97,7 @@ useEffect(() => {
         <label className='text-white p-2' htmlFor="symbol">Include Symbols</label>
         </div>
         <button 
-        className='bg-cyan-500 text-black p-2 rounded-3xl
+        className='bg-cyan-500 text-black p-2 rounded-lg
        
          active:ring-2 active:ring-offset-2 active:ring-green-500
         ' onClick={generatePassword}>Generate Password</button>
