@@ -1,8 +1,4 @@
 import { useState, useCallback,useEffect,useRef} from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import { use } from 'react'
 
 function App() {
   const [count, setCount] = useState(8)
@@ -43,8 +39,8 @@ useEffect(() => {
     //background is black so use colors like cyan blue for div purple and other neon colors for text,buttons  
     <>
     
-    <div>
-      <h1 className='bg-cyan-500 text-black p-4 round'>Password Generator</h1>
+    
+      <h1 className='bg-gray-300 w-screen text-black text-3xl text-center font-extrabold p-5'>Password Generator</h1>
       {/* <div className='flex justify-center items-center'>
         <div className='bg-black p-4 rounded-3xl'>  
         <div className='flex justify-center items-center'>
@@ -59,17 +55,18 @@ useEffect(() => {
         <input type="checkbox" id="symbol" checked={symbol} onChange={(e) => setSymbol(e.target.checked)} />
         <label className='text-white p-2' htmlFor="symbol">Include Symbols</label>
         </div>
-        <button className='bg-cyan-500 text-black p-2 rounded-3xl' onClick={generatePassword}>Generate Password</button>
+        <button className='bg-gray-300 text-black p-2 rounded-3xl' onClick={generatePassword}>Generate Password</button>
         </div>
       </div>
       <div className='flex justify-center items-center'>
-        <h1 className='bg-cyan-500 text-black p-4 round'>{password}</h1>
+        <h1 className='bg-gray-300 text-black p-4 round'>{password}</h1>
       </div> */}
-      <div className='flex justify-center items-center p-10 m-10 bg-cyan-500 rounded-3xl'>
-        <div className='flex flex-wrap justify-center items-center shadow-lg rounded-lg p-3'>
+      <div className='flex flex-wrap p-10  bg-gray-300 rounded-3xl max-w-fit w-full mx-auto my-10'>
+        <div className='flex max-w-full justify-center items-center shadow-lg rounded-lg overflow-hidden '>
           <input type="text"
-          value={password}a
-          className='outline-none px-3 py-1.5 m-2 rounded-lg'
+          value={password}
+          // what does {password}a do-the a is which property- value
+          className='outline-none px-3 py-1.5 m-2 rounded-lg max-w-full'
           placeholder='Password'
           readOnly
           ref={passwordRef} />
@@ -80,31 +77,34 @@ useEffect(() => {
           active:scale-90
   active:shadow-green-600
   '>copy</button>
+  
           </div>
-      </div>
-      <div className='flex flex-wrap justify-center items-center'>
-        <div className='text-white flex justify-center items-center'>
+      
+      <div className='flex flex-wrap justify-center items-center overflow-hidden'>
+        <div className='text-black flex justify-center items-center'>
        
         <input className='cursor-pointer p-2 m-2 rounded-3xl' min={8} max={16} type="range" value={count} onChange={(e) => setCount(e.target.value)} />
-        <label className='p-1 m-1 '>password length:{count}</label>
+        <label className='p-1 m-1 font-bold '>password length:{count}</label>
         </div>
         <div className='flex justify-center items-center'>
         <input type="checkbox" id="number" checked={number} onChange={(e) => setNumber(e.target.checked)} />
-        <label className='text-white p-2' htmlFor="number">Include Numbers</label>
+        <label className='text-black p-2 font-bold' htmlFor="number">Include Numbers</label>
         </div>
         <div className='flex justify-center items-center'>
         <input type="checkbox" id="symbol" checked={symbol} onChange={(e) => setSymbol(e.target.checked)} />
-        <label className='text-white p-2' htmlFor="symbol">Include Symbols</label>
+        <label className='text-black p-2 font-bold' htmlFor="symbol">Include Symbols</label>
         </div>
-        <button 
-        className='bg-cyan-500 text-black p-2 rounded-lg
-       
-         active:ring-2 active:ring-offset-2 active:ring-green-500
-        ' onClick={generatePassword}>Generate Password</button>
         
       </div>
 
-    </div>
+      </div>
+      <div className='flex justify-center items-center'>
+    <button 
+        className='bg-cyan-500 text-black font-bold p-2 rounded-lg 
+       
+         active:ring-2 active:ring-offset-2 active:ring-green-500
+        ' onClick={generatePassword}>Generate Password</button>
+       </div> 
     </>
   )
 }
